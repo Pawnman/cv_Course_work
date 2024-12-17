@@ -1,20 +1,22 @@
-# Используем базовый образ Python
+# Use official Python image
 FROM python:3.9
 
-# Устанавливаем рабочую директорию в контейнере
+# Set working directory
 WORKDIR /app
 
-# Копируем зависимости и код в контейнер
-COPY requirements.txt requirements.txt
-COPY . .
+# Copy requirements file
+COPY requirements.txt .
 
-# Устанавливаем зависимости
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 RUN apt-get update && apt-get install -y libgl1-mesa-glx
 
-# Открываем порт для FastAPI
-EXPOSE 8000
+# Copy application code
+COPY . .
 
-# Запускаем сервер
+# Expose the internal container port
+EXPOSE 8080
+
+# Run the FastAPI app using Uvicorn
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
