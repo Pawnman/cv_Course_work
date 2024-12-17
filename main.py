@@ -47,13 +47,6 @@ async def process_file(file: UploadFile, task_type: str, file_type: str):
     process_file_task(task_id, file_path, task_type, file_type)
     return JSONResponse({"task_id": task_id})
 
-def filter_results(results):
-    """
-    Фильтрует результаты YOLO, оставляя только объекты разрешенных классов.
-    """
-    results[0].boxes.data = [det for det in results[0].boxes.data if int(det[5]) in ALLOWED_CLASS_IDS]
-    return results
-
 
 def process_file_task(task_id, file_path, task_type, file_type):
     try:
