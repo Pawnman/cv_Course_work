@@ -17,4 +17,4 @@ RUN apt-get update && apt-get install -y libgl1-mesa-glx
 EXPOSE 8000
 
 # Запускаем сервер
-CMD ["uvicorn", "main:app", "--host", "127.0.0.1", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
