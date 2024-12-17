@@ -44,7 +44,7 @@
 <h2>Запуск сервиса:</h2>
 
 <ul>
-  <li>Необходимо в терминале ввести: docker compose up --build -d</li>
+  <li>Необходимо в терминале ввести: docker-compose up --build -d</li>
   <li>Зайти в браузере на <href>http://localhost:8000/docs</href></li>
   <li>После попадания в Swagger можно пользоваться API</li>
 </ul>
