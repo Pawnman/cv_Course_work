@@ -1,5 +1,5 @@
-<h1>Курсовая работа по дисциплине Computer Vision</h1>
-<p>Выполнил студент группы М8О-209М-23:</p>
+<h1>Coursework on the subject "Computer Vision"</h1>
+<p>Completed by student of group M8O-209M-23:</p>
 <ul>
   <li>Пешков Максим Юрьевич</li>
 </ul>
