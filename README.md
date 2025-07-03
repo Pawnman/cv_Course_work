@@ -4,109 +4,103 @@
   <li>Пешков Максим Юрьевич</li>
 </ul>
 
-<h2>Задачи:</h2>
+<h2>Tasks:</h2>
 <ul>
-  <li>Детекция объектов на изображении</li>
-  <li>Классификация объектов на изображении</li>
-  <li>Сегментация объектов на изображении</li>
-  <li>Детекция объектов на видео</li>
-  <li>Классификация объектов на видео</li>
-  <li>Сегментация объектов на видео</li>
+  <li>Detection of objects in an image</li>
+  <li>Classification of objects in an image</li>
+  <li>Segmentation of objects in an image</li>
+  <li>Object detection in video</li>
+  <li>Classification of objects in video</li>
+  <li>Segmentation of objects in video</li>
 </ul>
 
-<h2>Объекты:</h2>
+<h2>Objects:</h2>
 <ul>
-  <li>Самолеты (airplanes)</li>
-  <li>Водный транспорт (boat)</li>
-</ul>
-
-
-<h2>Сервис:</h2>
-<ul>
-  <li>Архитектура нейронной сети: YOLO8</li>
-  <li>Данные: COCO Dataset</li>
-  <li>Для сохранения результатов используется локальное хранилище</li>
-  <li>Для реализации API используется фреймворк FastAPI</li>
-  <li>Развертывание сервиса в Docker</li>
+  <li>Airplanes</li>
+  <li>Boats</li>
 </ul>
 
 
-
-
-<p>При достижении финиша Шрек проходит уровень лабиринта и выигрывает, а при получении урона (весомых аргументов против утверждений Шрека) от непрошенного гостя – теряет здоровье и проигрывает.</p>
-
-
-<h2>Функционал сервиса:</h2>
-<p>С помощью API пользователь загружает изображение/видео для детекции/классификации/сегментации/трекинга. Сервис производит обработку материала и создает файл (изображение/видео) результата на локальном хранилище, присваивая ему индивидуальный id. По сформированному id пользователь может скачать необходимое изображение или видео с результатом работы (классификация/детекция/сегментирование/трекинг).</p>
-
-
-<h2>Запуск сервиса:</h2>
-
+<h2>Service:</h2>
 <ul>
-  <li>Необходимо в терминале ввести: docker-compose up --build -d</li>
-  <li>Зайти в браузере на <href>http://localhost:8000/docs</href></li>
-  <li>После попадания в Swagger можно пользоваться API</li>
+  <li>Neural network architecture: YOLO8</li>
+  <li>Data: COCO Dataset</li>
+  <li>Local storage is used to save results</li>
+  <li>The FastAPI framework is used to implement the API</li>
+  <li>Deploying in Docker</li>
 </ul>
 
-<h2>Описание API:</h2>
+<h2>Service functionality:</h2>
+<p>Using the API, the user uploads an image/video for detection/classification/segmentation/tracking. The service processes the material and creates a file (image/video) of the result in the local storage, assigning it an individual id. Using the generated id, the user can download the required image or video with the result of the work (classification/detection/segmentation/tracking).</p>
+
+
+<h2>Launching the service:</h2>
+
 <ul>
-  <li>[POST] /upload_image_detection - загрузка изображения для классификации и детекции - в качестве результата возвращается id </li>
-  <li>[POST] /upload_image_segmentation - загрузка изображения для сегментации - в качестве результата возвращается id </li>
-  <li>[POST] /upload_video - загрузка видео для трекинга - в качестве результата возвращается id </li>
-  <li>[GET] /status/{task_id} - запрос на получение статуса по завершению операции по id - в качестве результата возвращается json со статусом:
+  <li>You need to enter the following in the terminal: docker-compose up --build -d</li>
+  <li>Go to the browser at <href>http://localhost:8000/docs</href></li>
+  <li>Once you get into Swagger, you can use the API</li>
+</ul>
+
+<h2>API description:</h2>
+<ul>
+  <li>[POST] /upload_image_detection - loading an image for classification and detection - id is returned as a result </li>
+  <li>[POST] /upload_image_segmentation - loading image for segmentation - id is returned as result </li>
+  <li>[POST] /upload_video - uploading video for tracking - id is returned as result </li>
+  <li>[GET] /status/{task_id} - request to get the status of the completion of an operation by id - json with the status is returned as a result:
     <ul>
-      <li>"done" - Обработка выполнена успешно</li>
-      <li>"error" - Во время обработки возникла ошибка</li>
+      <li>"done" - Processing completed successfully</li>
+      <li>"error" - An error occurred during processing</li>
     </ul>
-  <li>[GET] /result/{task_id} - запрос на получение результата операции по id - в качестве результата возвращается json со статусом:
+  <li>[GET] /result/{task_id} - request to get the result of an operation by id - json with the status is returned as a result:
     <ul>
-      <li>"Task not found" - Результат не найден (операция не совершалась)</li>
-      <li>"Result not ready" - Результат еще не готов (дфнные находятся в обработке)</li>
-      <li>"Result file not found" - Результат отсутствует</li>
+      <li>"Task not found" - Result not found (operation not performed)</li>
+      <li>"Result not ready" - The result is not ready yet (data is being processed)</li>
+      <li>"Result file not found" - No result</li>
     </ul>
-  <li>[GET] /download/{task_id} - запрос на скачивание результата (изображение/видео) по id - в качестве результата возвращается ссылка Download </li>
+  <li>[GET] /download/{task_id} - request to download the result (image/video) by id - the Download link is returned as the result </li>
 </ul>
 
-<h2>Результаты работы сервиса:</h2>
+<h2>Results of the service:</h2>
 <p></p>
 <figure>
    <img src="./img_examples/test_1.jpg" width="800"/>
-   <figcaption>Рисунок 1 - Изображение 1 для детекции и классификации</figcaption>
+   <figcaption>Image 1 - Image 1 for detection and classification</figcaption>
   </figure>
 <p></p>
 <p></p>
 <p></p>
   <figure>
    <img src="./img_examples/test_1.1.jpg" width="800"/>
-   <figcaption>Рисунок 2 - Изображение 1 - результат</figcaption>
+   <figcaption>Image 2 - Image 1 - result</figcaption>
   </figure>
 <p></p>
 
 <p></p>
 <figure>
    <img src="./img_examples/test_11.jpg" width="800"/>
-   <figcaption>Рисунок 3 - Изображение 2 для детекции и классификации</figcaption>
+   <figcaption>Image 3 - Image 2 for detection and classification</figcaption>
   </figure>
 <p></p>
 <p></p>
 <p></p>
   <figure>
    <img src="./img_examples/test_11.1.jpg" width="800"/>
-   <figcaption>Рисунок 4 - Изображение 2 - результат</figcaption>
+   <figcaption>Image 4 - Image 2 - result</figcaption>
   </figure>
 <p></p>
 
 <p></p>
 <figure>
    <img src="./img_examples/boat_5.jpg" width="800"/>
-   <figcaption>Рисунок 5 - Изображение 3 для детекции и классификации и сегментации</figcaption>
+   <figcaption>Image 5 - Image 3 for detection and classification and segmentation</figcaption>
   </figure>
 <p></p>
 <p></p>
 <p></p>
   <figure>
    <img src="./img_examples/boat_5.1.jpg" width="800"/>
-   <figcaption>Рисунок 6 - Изображение 3 - результат</figcaption>
+   <figcaption>Image 6 - Image 3 - result</figcaption>
   </figure>
 <p></p>
 
